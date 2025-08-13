@@ -1,4 +1,4 @@
-from ..state import AsignacionHorarios, Tabla_ConsultaHorarios
+from ..state import AsignacionHorarios, Tabla_ConsultaHorarios, Login
 from ..styles.colors import Colors
 import reflex as rx
 
@@ -34,7 +34,8 @@ def form_reservar():
                                     placeholder="Número de Empleado",
                                     name="numero_empleado",
                                     required=True,
-                                    disabled=True,
+                                    value=Login.no_empleado_activo,
+                                    read_only=True,
                                     variant="surface",
                                     color_scheme="green",
                                 ),
@@ -46,7 +47,8 @@ def form_reservar():
                                     placeholder="Nombre del Docente", 
                                     name="nombre_maestro",
                                     required=True,
-                                    disabled=True,
+                                    value=Login.nombre_docente,
+                                    read_only=True,
                                     variant="surface",
                                     color_scheme="green",
                                     width="400px"

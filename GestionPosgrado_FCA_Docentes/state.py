@@ -46,7 +46,7 @@ import reflex as rx
 class Login(rx.State):
     _db:MYSQLDB = MYSQLDB()
     id_docente:int = 0
-    #nombre_docente: str = ""
+    nombre_docente: str = ""
     no_empleado_activo:str = ""
     password:str = ""
     is_login:bool = False
@@ -57,9 +57,9 @@ class Login(rx.State):
             password = form_data["password"]
             resultado = self._db.verificacion_usuario(no_empleado, password)
             if resultado:
-                #dato = resultado[0]
+                dato = resultado[0]
                 #self.id_docente = dato[0]
-                #self.nombre_docente = dato[1]
+                self.nombre_docente = dato[1]
                 self.no_empleado_activo = no_empleado
                 self.password = password
                 self.is_login = True
@@ -73,9 +73,10 @@ class Login(rx.State):
     
     def cerrar_sesion(self):
         self.is_login = False
-        #self.id_docente = 0
-        #self.nombre_docente = ""
+        self.id_docente = 0
+        self.nombre_docente = ""
         self.no_empleado_activo = ""
+        self.password = ""
         return rx.redirect("/")
     
     def verificacion_login(self):

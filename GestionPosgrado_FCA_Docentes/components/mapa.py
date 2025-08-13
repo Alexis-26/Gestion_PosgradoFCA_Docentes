@@ -6,6 +6,17 @@ from .formulario_reserva import form_reservar
 from .simbologia import simbologia_colores
 from .reservacion import reservar_salon
 
+def get_bg_color(estado):
+    return rx.cond(
+        estado == "RESERVADO",
+        Colors.RED.value,
+        rx.cond(
+            estado == "FIJO",
+            Colors.BLACK.value,
+            "white"
+        )
+    )
+
 def dialog_form_normal(salon:str) -> rx.Component:
     return rx.dialog.root(
         rx.dialog.trigger(
@@ -142,7 +153,7 @@ def salon_normal(info):
                 ),
                 width=["70px", "150px"],
                 height=["50px", "80px"],
-                background=Colors.RED.value #Colors.PRIMARY_ORANGE.value
+                background=get_bg_color(info[7]) #Colors.PRIMARY_ORANGE.value
             )
         ),
         rx.popover.content(
@@ -229,7 +240,7 @@ def salon_especial_izquierda(info):
                 width=["60px", "150px"],
                 height=["100px", "200px"],
                 border_bottom_left_radius=["100px", "200px"],
-                background=Colors.RED.value
+                background=get_bg_color(info[7])
             )
         ),
         rx.popover.content(
@@ -316,7 +327,7 @@ def salon_especial_derecha(info):
                 width=["60px", "150px"],
                 height=["100px", "200px"],
                 border_bottom_right_radius=["100px", "200px"],
-                background=Colors.RED.value
+                background=get_bg_color(info[7])
             )
         ),
         rx.popover.content(
@@ -433,7 +444,8 @@ def mapa_primer_nivel():
             rx.vstack(
                 rx.text("Primer Nivel (Primer Piso)", 
                         font_size=[FontSize.SMALL.value, FontSize.LARGE.value]),
-                
+                rx.text(f"Reservaciones de las {ConsultaHorarios.select_horas}", 
+                        font_size=[FontSize.SMALL.value, FontSize.MEDIUM.value]),
                 # Primera fila (101 y 103)
                 # rx.hstack(
                 #     render_salon("101"),
@@ -471,7 +483,7 @@ def mapa_primer_nivel():
                 ),
                 simbologia_colores(),
                 align="center",
-                spacing="7",
+                spacing="2",
                 #background="red",
                 width="100%",
             ),
@@ -489,7 +501,8 @@ def mapa_primer_nivel():
             rx.vstack(
                 rx.text("Primer Nivel (Primer Piso)", 
                         font_size=[FontSize.SMALL.value, FontSize.LARGE.value]),
-                
+                rx.text(f"Reservaciones de las {ConsultaHorarios.select_horas}", 
+                        font_size=[FontSize.SMALL.value, FontSize.MEDIUM.value]),
                 # Primera fila (101 y 103)
                 rx.grid(
                     render_salon("101"),
@@ -530,6 +543,8 @@ def mapa_segundo_nivel():
             rx.vstack(
                 rx.text("Segundo Nivel (Segundo Piso)", 
                         font_size=[FontSize.SMALL.value, FontSize.LARGE.value]),
+                rx.text(f"Reservaciones de las {ConsultaHorarios.select_horas}", 
+                        font_size=[FontSize.SMALL.value, FontSize.MEDIUM.value]),
                 # rx.hstack(
                 #     render_salon("201"),
                 #     rx.spacer(),
@@ -565,7 +580,7 @@ def mapa_segundo_nivel():
                 ),
                 simbologia_colores(),
                 align="center",
-                spacing="7",
+                spacing="2",
                 width="100%",
             ),
             # center_content=True,
@@ -580,6 +595,8 @@ def mapa_segundo_nivel():
             rx.vstack(
                 rx.text("Segundo Nivel (Segundo Piso)", 
                         font_size=[FontSize.SMALL.value, FontSize.LARGE.value]),
+                rx.text(f"Reservaciones de las {ConsultaHorarios.select_horas}", 
+                        font_size=[FontSize.SMALL.value, FontSize.MEDIUM.value]),
                 # rx.hstack(
                 #     render_salon("201"),
                 #     rx.spacer(),
