@@ -31,6 +31,12 @@ def get_color(status: rx.Var[str]):
         )
     )
 
+def get_btn_eliminar(status: rx.Var[str], dato):
+    return rx.cond(
+        status == "RESERVADO",
+        eliminar_reservacion(dato[0], dato[4], dato[6])
+    )
+
 def show_row(dato):
     return rx.table.row(
         rx.table.cell(dato[0]),  # Salón
@@ -42,10 +48,7 @@ def show_row(dato):
         rx.table.cell(dato[6]),  # Hora
         rx.table.cell(get_status_badge(dato[7])),  # Status
         rx.table.cell(
-            rx.hstack(
-                eliminar_reservacion(dato[0], dato[4], dato[6]),
-                #editar_reservacion()
-            )
+            get_btn_eliminar(dato[7], dato)
         )
         #rx.table.cell(rx.button("Ubicacion"))
     )
@@ -169,10 +172,7 @@ def show_horarios(dato):
                             rx.data_list.item(
                                 rx.data_list.label("Acción"),
                                 rx.data_list.value(
-                                    rx.hstack(
-                                        eliminar_reservacion(dato[0], dato[4], dato[6]),
-                                        #editar_reservacion()
-                                    )
+                                    get_btn_eliminar(dato[7], dato)
                                 ),
                                 align="center",
                             ),

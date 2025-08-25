@@ -8,25 +8,24 @@ def navbar() -> rx.Component:
     return rx.box(
         rx.flex(
             # Elemento vacío para balancear el lado izquierdo
-            rx.box(width=["60px", "160px"]) ,
+            #rx.box(width=["60px", "160px"]) ,
             
             # Título centrado con logo
             rx.hstack(
-                rx.image(src=Imagenes.LOGO.value, width=["20px", "60px"]) ,
+                rx.image(src=Imagenes.LOGO_UABC_FCA.value, width=["40px", "120px"]),
                 rx.text("REGISTROS DE HORARIOS", 
                         font_size=["16px", FontSize.EXTRA_LARGE.value],
                         weight="bold", 
-                        color=Colors.WHITE.value) ,
-                align="center",
+                        color=Colors.WHITE.value),
             ) ,
             
             # Botón en el lado derecho
-            rx.hstack(
-                cambio_password(),
-                cerrar_sesion(),
-            ),
+            # rx.hstack(
+            #     cambio_password(),
+            #     cerrar_sesion(),
+            # ),
 
-            justify="between",
+            justify="center",
             align="center",
             width="100%",
             height="100%",
@@ -42,25 +41,24 @@ def navbar_reservas() -> rx.Component:
     return rx.box(
         rx.flex(
             # Elemento vacío para balancear el lado izquierdo
-            regresar_inicio(),
+            #regresar_inicio(),
             
             # Título centrado con logo
             rx.hstack(
-                rx.image(src=Imagenes.LOGO.value, width=["20px", "60px"]) ,
+                rx.image(src=Imagenes.LOGO_UABC_FCA.value, width=["40px", "120px"]) ,
                 rx.text("MIS RESERVACIONES", 
                         font_size=["16px", FontSize.EXTRA_LARGE.value],
                         weight="bold", 
-                        color=Colors.WHITE.value) ,
-                align="center",
+                        color=Colors.WHITE.value),
             ) ,
             
             # Botón en el lado derecho
-            rx.hstack(
-                cambio_password(),
-                cerrar_sesion(),
-            ),
+            # rx.hstack(
+            #     cambio_password(),
+            #     cerrar_sesion(),
+            # ),
             
-            justify="between",
+            justify="center",
             align="center",
             width="100%",
             height="100%",
@@ -68,6 +66,47 @@ def navbar_reservas() -> rx.Component:
         width="100%",
         height=["50px", "100px"],
         background=Colors.PRIMARY_GREEN.value,
+        padding_left=["10px", "60px"],
+        padding_right=["10px", "60px"]
+    )
+
+def botones_navegacion_inicial_desktop() -> rx.Component:
+    return rx.box(
+        rx.flex(
+            rx.hstack(
+                cambio_password(),
+                cerrar_sesion()
+            ),
+            justify="end",
+            align="center",
+            width="100%",
+            height="100%"
+        ),
+        width="100%",
+        height=["50px", "60px"],
+        #background=Colors.SECONDARY_GREEN.value,
+        padding_left=["10px", "60px"],
+        padding_right=["10px", "60px"]
+    )
+
+def botones_navegacion_misreservas_desktop() -> rx.Component:
+    return rx.box(
+        rx.flex(
+            rx.hstack(
+                regresar_inicio()
+            ),
+            rx.hstack(
+                cambio_password(),
+                cerrar_sesion()
+            ),
+            justify="between",
+            align="center",
+            width="100%",
+            height="100%"
+        ),
+        width="100%",
+        height=["50px", "60px"],
+        #background=Colors.SECONDARY_GREEN.value,
         padding_left=["10px", "60px"],
         padding_right=["10px", "60px"]
     )

@@ -1,4 +1,4 @@
-from .components.navbar import navbar, navbar_reservas
+from .components.navbar import navbar, navbar_reservas, botones_navegacion_inicial_desktop, botones_navegacion_misreservas_desktop
 from .components.filtro import calendar, search_docente, search_materia, grupo, hora
 from .components.mapa import mapa_primer_nivel, mapa_segundo_nivel
 from .components.inicio_sesion import inicion_sesion_desktop, inicion_sesion_mobile
@@ -7,7 +7,7 @@ from .components.botones import mis_reservaciones
 from .components.consulta_reservaciones import tabla_horarios, lista_horarios
 from .components.formulario_reserva import form_reservar
 from .components.formulario_cambio import form_cambio
-from .state import ConsultaHorarios, Login, AsignacionHorarios, FormCambio
+from .state import ConsultaHorarios, Login, AsignacionHorarios, FormCambio, Tabla_ConsultaHorarios
 import reflex as rx
 
 def inicio_sesion_page() -> rx.Component:
@@ -29,6 +29,7 @@ def reservacion_page() -> rx.Component:
             #     disabled=AsignacionHorarios.select_horario
             # ),
             # FILTROS
+            botones_navegacion_inicial_desktop(),
             rx.box(
                 # rx.hstack(
                 #     #search_docente(),
@@ -37,6 +38,10 @@ def reservacion_page() -> rx.Component:
                 #     spacing="3"
                 # ),
                 rx.vstack(
+                    rx.hstack(
+                        rx.text("Fecha del dia de hoy:"),
+                        rx.text(Tabla_ConsultaHorarios.fecha_actual),
+                    ),
                     rx.hstack(
                         calendar(),
                         hora(),
@@ -104,6 +109,10 @@ def reservacion_page() -> rx.Component:
                 rx.vstack(
                     #search_docente(),
                     #search_materia(),
+                    rx.hstack(
+                        rx.text("Fecha del dia de hoy:"),
+                        rx.text(Tabla_ConsultaHorarios.fecha_actual),
+                    ),
                     rx.hstack(
                         calendar(),
                         hora(),
@@ -221,6 +230,7 @@ def mis_reservaciones_page() -> rx.Component:
     return rx.box(
         rx.tablet_and_desktop(
             navbar_reservas(),
+            botones_navegacion_misreservas_desktop(),
             rx.box(
                 tabla_horarios(),
                 width="100%",

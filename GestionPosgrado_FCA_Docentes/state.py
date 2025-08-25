@@ -232,6 +232,7 @@ class Tabla_ConsultaHorarios(rx.State):
     fecha_fin_habilitado:bool = True
     hora_fijo_checked:bool = False
     no_empleado = ""
+    fecha_actual = datetime.today().strftime("%d-%m-%Y")
 
     async def informacion_horarios(self):
         self.lista_horarios = [] # Reinicia la lista
@@ -471,7 +472,7 @@ class AsignacionHorarios(rx.State):
     def toggle_select_horas(self, fecha):
         if fecha != "":
             self.fecha_seleccionada = fecha
-            self.filtro_horarios(self.salon, fecha)
+            self.filtro_horarios(self.salon_abierto, fecha)
             self.select_horario = False
         else:
             self.select_horario = True
@@ -487,9 +488,9 @@ class AsignacionHorarios(rx.State):
         clave_materia = form_data.get("clave_materia")
         nombre_materia = form_data.get("nombre_materia")
         grupo = form_data.get("grupo")
-        h_fijo = form_data.get("horario_fijo")
+        #h_fijo = form_data.get("horario_fijo")
         fecha_inicio = form_data.get("fecha_inicio")
-        fecha_fin = form_data.get("fecha_fin")
+        #fecha_fin = form_data.get("fecha_fin")
 
         # Sección de horas reservadas
         # Nota: Es el unico que no se extrae del formulario ya que el componente es creado, no de reflex
@@ -503,14 +504,15 @@ class AsignacionHorarios(rx.State):
                 # print(key, value[0])
                 horas_reservadas.append(key)
 
-        if h_fijo == "fijo":
-            for hora in horas_reservadas:
-                query = self._db.add_reserva(clave_salon=salon, no_empleado=no_empleado, clave_materia=clave_materia, grupo=grupo, 
-                                            fecha_inicio=fecha_inicio, fecha_final=fecha_fin, hora=hora, status="FIJO")
-        else:
-            for hora in horas_reservadas:
-                query = self._db.add_reserva(salon, no_empleado, clave_materia, grupo, fecha_inicio, None, hora, status="RESERVADO")
+        # if h_fijo == "fijo":
+        #     for hora in horas_reservadas:
+        #         query = self._db.add_reserva(clave_salon=salon, no_empleado=no_empleado, clave_materia=clave_materia, grupo=grupo, 
+        #                                     fecha_inicio=fecha_inicio, fecha_final=fecha_fin, hora=hora, status="FIJO")
+        # else:
+        for hora in horas_reservadas:
+            query = self._db.add_reserva(salon, no_empleado, clave_materia, grupo, fecha_inicio, None, hora, status="RESERVADO")
 
+        yield ConsultaHorarios.informacion_horarios
 
         print(salon)
         print(no_empleado)
@@ -519,13 +521,12 @@ class AsignacionHorarios(rx.State):
         print(nombre_materia)
         print(grupo)
         print(fecha_inicio)
-        print(fecha_fin)
-        print(h_fijo)
         #query = self._db.add_reserva(salon, no_empleado, clave_materia, grupo, fecha_inicio, fecha_fin, hora, status="Reservado")
         # self.menu = False
         self.menu_desktop = False
         self.menu_mobile = False
         self.mostrar_formulario = False
+        self.salon = ""
         self.salon_abierto = ""
         self.fecha_fin_habilitado= True
         self.select_horario = True

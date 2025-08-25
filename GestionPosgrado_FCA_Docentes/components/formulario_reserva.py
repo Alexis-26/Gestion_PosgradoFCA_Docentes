@@ -150,27 +150,27 @@ def form_reservar():
                             width="100%",
                             margin_top="20px"
                         ),
-                        rx.hstack(
-                            rx.vstack(
-                                rx.checkbox(text="Horario Fijo", name="horario_fijo", size="3", value="fijo", color_scheme="green", on_change=AsignacionHorarios.toggle_fecha_fin),
-                            ),
-                            rx.vstack(
-                                rx.text("Fecha de Finalización"), 
-                                rx.input(                   # Aqui esta el input DE FECHA DE FIN 
-                                    type="date",
-                                    disabled=AsignacionHorarios.fecha_fin_habilitado,
-                                    name="fecha_fin",
-                                    min=AsignacionHorarios.min_date,
-                                    variant="surface",
-                                    color_scheme="green"
-                                ),
-                                spacing="0",
-                                margin_left="10px"
-                            ),
-                            width="100%",
-                            margin_top="20px",
-                            spacing="9"
-                        ),
+                        # rx.hstack(
+                        #     rx.vstack(
+                        #         rx.checkbox(text="Horario Fijo", name="horario_fijo", size="3", value="fijo", color_scheme="green", on_change=AsignacionHorarios.toggle_fecha_fin),
+                        #     ),
+                        #     rx.vstack(
+                        #         rx.text("Fecha de Finalización"), 
+                        #         rx.input(                   # Aqui esta el input DE FECHA DE FIN 
+                        #             type="date",
+                        #             disabled=AsignacionHorarios.fecha_fin_habilitado,
+                        #             name="fecha_fin",
+                        #             min=AsignacionHorarios.min_date,
+                        #             variant="surface",
+                        #             color_scheme="green"
+                        #         ),
+                        #         spacing="0",
+                        #         margin_left="10px"
+                        #     ),
+                        #     width="100%",
+                        #     margin_top="20px",
+                        #     spacing="9"
+                        # ),
                         rx.hstack(
                             rx.button(
                                 "CANCELAR",
@@ -332,27 +332,27 @@ def form_reservar():
                                 ),
                                 spacing="0"
                             ),
-                            rx.hstack(
-                                rx.vstack(
-                                    rx.checkbox(text="Horario Fijo", name="horario_fijo", size="3", value="fijo", color_scheme="green", on_change=AsignacionHorarios.toggle_fecha_fin),
-                                ),
-                                rx.vstack(
-                                    rx.text("Fecha de Finalización"), 
-                                    rx.input(                   # Aqui esta el input DE FECHA DE FIN 
-                                        type="date",
-                                        disabled=AsignacionHorarios.fecha_fin_habilitado,
-                                        name="fecha_fin",
-                                        min=AsignacionHorarios.min_date,
-                                        variant="surface",
-                                        color_scheme="green"
-                                    ),
-                                    spacing="0",
-                                    margin_left="10px"
-                                ),
-                                width="100%",
-                                #margin_top="20px",
-                                spacing="9"
-                            ),
+                            # rx.hstack(
+                            #     rx.vstack(
+                            #         rx.checkbox(text="Horario Fijo", name="horario_fijo", size="3", value="fijo", color_scheme="green", on_change=AsignacionHorarios.toggle_fecha_fin),
+                            #     ),
+                            #     rx.vstack(
+                            #         rx.text("Fecha de Finalización"), 
+                            #         rx.input(                   # Aqui esta el input DE FECHA DE FIN 
+                            #             type="date",
+                            #             disabled=AsignacionHorarios.fecha_fin_habilitado,
+                            #             name="fecha_fin",
+                            #             min=AsignacionHorarios.min_date,
+                            #             variant="surface",
+                            #             color_scheme="green"
+                            #         ),
+                            #         spacing="0",
+                            #         margin_left="10px"
+                            #     ),
+                            #     width="100%",
+                            #     #margin_top="20px",
+                            #     spacing="9"
+                            # ),
                             rx.hstack(
                                 rx.button(
                                     "CANCELAR",
