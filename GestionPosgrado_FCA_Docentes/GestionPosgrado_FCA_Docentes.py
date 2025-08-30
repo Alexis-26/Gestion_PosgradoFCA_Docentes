@@ -41,7 +41,7 @@ def reservacion_page() -> rx.Component:
                 rx.vstack(
                     rx.hstack(
                         rx.text("Fecha del dia de hoy:", font_size=Texto_Desktop.SUBTITULOS.value, weight="bold"),
-                        rx.text(Tabla_ConsultaHorarios.fecha_actual, font_size=Texto_Desktop.SUBTITULOS.value),
+                        rx.text(ConsultaHorarios.fecha_hoy, font_size=Texto_Desktop.SUBTITULOS.value),
                     ),
                     rx.vstack(
                         rx.text("Filtros", font_size=Texto_Desktop.SECCIONES.value),
