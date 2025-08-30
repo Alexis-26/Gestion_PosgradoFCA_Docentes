@@ -9,7 +9,7 @@ def calendar() -> rx.Component:
         rx.tablet_and_desktop(
             rx.input(
                 #min=datetime.datetime.now(), Falta configurar
-                default_value=ConsultaHorarios.fecha_seleccionada,
+                default_value=ConsultaHorarios.fecha_hoy,
                 name="filtro_fecha",
                 type="date",
                 size="3",
@@ -19,7 +19,7 @@ def calendar() -> rx.Component:
         rx.mobile_only(
             rx.input(
                 #min=datetime.datetime.now(), Falta configurar
-                default_value=ConsultaHorarios.fecha_seleccionada,
+                default_value=ConsultaHorarios.fecha_hoy,
                 name="filtro_fecha",
                 type="date",
                 size="1",
@@ -52,11 +52,12 @@ def grupo() -> rx.Component:
     )
 
 def hora() -> rx.Component:
+    hora = ConsultaHorarios.hora_actual
     return rx.box(
         rx.tablet_and_desktop(
             rx.select(
                 ConsultaHorarios.horas,
-                default_value=ConsultaHorarios.select_horas,
+                default_value=hora,
                 placeholder="Hora",
                 name="filtro_hora",
                 size="3",
@@ -68,7 +69,7 @@ def hora() -> rx.Component:
         rx.mobile_only(
             rx.select(
                 ConsultaHorarios.horas,
-                default_value=ConsultaHorarios.select_horas,
+                default_value=hora,
                 placeholder="Hora",
                 name="filtro_hora",
                 size="1",

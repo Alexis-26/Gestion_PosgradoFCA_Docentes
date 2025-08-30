@@ -36,6 +36,25 @@ def mis_reservaciones():
         on_click=rx.redirect("/horarios/reservaciones")
     )
 
+def mis_reservaciones_mobile():
+    return rx.button(
+        rx.icon(tag=Iconos.MISRESERVACIONES.value, 
+                class_name="w-[30px] h-[30px] md:w-[30px] md:h-[30px]",
+                color=Colors.BLACK.value
+                ),
+        # rx.text("Regresar", 
+        #         color=Colors.BLACK.value,
+        #         font_size=["5px", FontSize.SMALL.value]
+        #         ),
+        variant="solid",
+        width=["35px", "45px"],
+        height=["35px", "45px"],
+        background=Colors.WHITE.value,
+        radius="full",
+        on_click=rx.redirect("/horarios/reservaciones")
+    )
+
+
 def cerrar_sesion():
     return rx.button(
         rx.icon(tag=Iconos.CERRAR_SESION.value, 
@@ -86,8 +105,3 @@ def editar_reservacion():
         ),
         background=Colors.SECONDARY_GREEN.value
     )
-# on_click=[
-#             rx.clear_local_storage(),
-#             rx.clear_session_storage(),
-#             Login.cerrar_sesion,
-#             ]

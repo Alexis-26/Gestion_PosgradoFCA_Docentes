@@ -86,7 +86,7 @@ def show_row(kv):
                     padding="0",
                     spacing="0"
                     ),
-                width=["60px", "150px"], 
+                width=["60px", "100%"], 
                 height=["60px","80px"],
                 justify="center",
                 align="center",
@@ -121,12 +121,12 @@ def horario_table_1():
         rx.table.header(
             rx.table.row(
                 rx.table.column_header_cell("Hora", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value]),
-                rx.table.column_header_cell(ConsultaHorarios.salones_primer_nivel[0], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value]),
-                rx.table.column_header_cell(ConsultaHorarios.salones_primer_nivel[1], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value]),
-                rx.table.column_header_cell(ConsultaHorarios.salones_primer_nivel[2], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value]),
-                rx.table.column_header_cell(ConsultaHorarios.salones_primer_nivel[3], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value]),
-                rx.table.column_header_cell(ConsultaHorarios.salones_primer_nivel[4], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value]),
-                rx.table.column_header_cell(ConsultaHorarios.salones_primer_nivel[5], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value]),
+                rx.table.column_header_cell(ConsultaHorarios.salones_primer_nivel[0], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value], width=["60px", "150px"]),
+                rx.table.column_header_cell(ConsultaHorarios.salones_primer_nivel[1], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value], width=["60px", "150px"]),
+                rx.table.column_header_cell(ConsultaHorarios.salones_primer_nivel[2], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value], width=["60px", "150px"]),
+                rx.table.column_header_cell(ConsultaHorarios.salones_primer_nivel[3], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value], width=["60px", "150px"]),
+                rx.table.column_header_cell(ConsultaHorarios.salones_primer_nivel[4], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value], width=["60px", "150px"]),
+                rx.table.column_header_cell(ConsultaHorarios.salones_primer_nivel[5], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value], width=["60px", "150px"]),
                 background=Colors.SECONDARY_ORANGE.value,
             ),
         ),
@@ -134,8 +134,8 @@ def horario_table_1():
             rx.foreach(ConsultaHorarios.horario_dict_1.items(), show_row)
         ),
         on_mount=ConsultaHorarios.informacion_horarios,
-        width=["100%", "100%"],
-        padding=["5px", "40px"],
+        width=["100%", "70%"],
+        #padding=["5px", "40px"],
     )
 
 def horario_table_2():
@@ -143,12 +143,12 @@ def horario_table_2():
         rx.table.header(
             rx.table.row(
                 rx.table.column_header_cell("Hora", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value]),
-                rx.table.column_header_cell(ConsultaHorarios.salones_segundo_nivel[0], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value]),
-                rx.table.column_header_cell(ConsultaHorarios.salones_segundo_nivel[1], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value]),
-                rx.table.column_header_cell(ConsultaHorarios.salones_segundo_nivel[2], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value]),
-                rx.table.column_header_cell(ConsultaHorarios.salones_segundo_nivel[3], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value]),
-                rx.table.column_header_cell(ConsultaHorarios.salones_segundo_nivel[4], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value]),
-                rx.table.column_header_cell(ConsultaHorarios.salones_segundo_nivel[5], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value]),
+                rx.table.column_header_cell(ConsultaHorarios.salones_segundo_nivel[0], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value], width=["60px", "150px"]),
+                rx.table.column_header_cell(ConsultaHorarios.salones_segundo_nivel[1], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value], width=["60px", "150px"]),
+                rx.table.column_header_cell(ConsultaHorarios.salones_segundo_nivel[2], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value], width=["60px", "150px"]),
+                rx.table.column_header_cell(ConsultaHorarios.salones_segundo_nivel[3], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value], width=["60px", "150px"]),
+                rx.table.column_header_cell(ConsultaHorarios.salones_segundo_nivel[4], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value], width=["60px", "150px"]),
+                rx.table.column_header_cell(ConsultaHorarios.salones_segundo_nivel[5], justify="center", border="2px solid #000000", font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value], width=["60px", "150px"]),
                 background=Colors.SECONDARY_ORANGE.value
             ),
         ),
@@ -156,6 +156,6 @@ def horario_table_2():
             rx.foreach(ConsultaHorarios.horario_dict_2.items(), show_row)
         ),
         #on_mount=ConsultaHorarios.informacion_horarios,
-        width=["100%", "100%"],
-        padding=["5px", "40px"],
+        width=["100%", "70%"],
+        #padding=["5px", "40px"],
     )

@@ -1,6 +1,7 @@
 import reflex as rx
 from ..styles.colors import Colors
 from ..styles.styles import FontSize
+from ..styles.utils import Texto_Desktop, Texto_Mobile
 from ..state import ConsultaHorarios, AsignacionHorarios
 from .formulario_reserva import form_reservar
 from .simbologia import simbologia_colores
@@ -160,7 +161,7 @@ def salon_normal(info):
             rx.vstack(
                 rx.hstack(
                     rx.popover.close(
-                        rx.button(rx.icon("x"), size="1"),
+                        rx.button(rx.icon("x"), size="1", background=Colors.PRIMARY_ORANGE.value),
                     ),
                     width="100%",
                     justify="end"
@@ -217,7 +218,8 @@ def salon_normal(info):
                     width="100%"
                 ),
             ),
-            size="1"
+            size="1",
+            align="center"
         )
     ),
 
@@ -247,7 +249,7 @@ def salon_especial_izquierda(info):
             rx.vstack(
                 rx.hstack(
                     rx.popover.close(
-                        rx.button(rx.icon("x"), size="1"),
+                        rx.button(rx.icon("x"), size="1", background=Colors.PRIMARY_ORANGE.value),
                     ),
                     width="100%",
                     justify="end"
@@ -304,7 +306,8 @@ def salon_especial_izquierda(info):
                     width="100%"
                 ),
             ),
-            size="1"
+            size="1",
+            align="center"
         )
     ),
 
@@ -334,7 +337,7 @@ def salon_especial_derecha(info):
             rx.vstack(
                 rx.hstack(
                     rx.popover.close(
-                        rx.button(rx.icon("x"), size="1"),
+                        rx.button(rx.icon("x"), size="1", background=Colors.PRIMARY_ORANGE.value),
                     ),
                     width="100%",
                     justify="end"
@@ -391,7 +394,8 @@ def salon_especial_derecha(info):
                     width="100%"
                 ),
             ),
-            size="1"
+            size="1",
+            align="center"
         )
     ),
 
@@ -442,10 +446,18 @@ def mapa_primer_nivel():
     return rx.box(
         rx.desktop_only(
             rx.vstack(
-                rx.text("Primer Nivel (Primer Piso)", 
-                        font_size=[FontSize.SMALL.value, FontSize.LARGE.value]),
+                rx.text("Primer nivel (Primer piso)", 
+                        font_size=[FontSize.SMALL.value, Texto_Desktop.SUBTITULOS.value],
+                        weight="bold"),
                 rx.text(f"Reservaciones de las {ConsultaHorarios.select_horas}", 
-                        font_size=[FontSize.SMALL.value, FontSize.MEDIUM.value]),
+                        font_size=[FontSize.SMALL.value, Texto_Desktop.SECCIONES.value]),
+                rx.hstack(
+                    rx.text("con fecha", 
+                        font_size=[FontSize.SMALL.value, Texto_Desktop.SECCIONES.value]),
+                    rx.text(rx.moment(ConsultaHorarios.fecha_seleccionada, format="DD-MM-YYYY"),
+                            font_size=[FontSize.SMALL.value, Texto_Desktop.SECCIONES.value]),
+                    spacing="2"
+                ),
                 # Primera fila (101 y 103)
                 # rx.hstack(
                 #     render_salon("101"),
@@ -499,10 +511,18 @@ def mapa_primer_nivel():
         ),
         rx.mobile_and_tablet(
             rx.vstack(
-                rx.text("Primer Nivel (Primer Piso)", 
-                        font_size=[FontSize.SMALL.value, FontSize.LARGE.value]),
+                 rx.text("Primer nivel (Primer piso)", 
+                        font_size=Texto_Mobile.SUBTITULOS.value,
+                        weight="bold"),
                 rx.text(f"Reservaciones de las {ConsultaHorarios.select_horas}", 
-                        font_size=[FontSize.SMALL.value, FontSize.MEDIUM.value]),
+                        font_size=Texto_Mobile.SECCIONES.value),
+                rx.hstack(
+                    rx.text("con fecha", 
+                        font_size=[FontSize.SMALL.value, Texto_Desktop.SECCIONES.value]),
+                    rx.text(rx.moment(ConsultaHorarios.fecha_seleccionada, format="DD-MM-YYYY"),
+                            font_size=[FontSize.SMALL.value, Texto_Desktop.SECCIONES.value]),
+                    spacing="2"
+                ),
                 # Primera fila (101 y 103)
                 rx.grid(
                     render_salon("101"),
@@ -541,10 +561,18 @@ def mapa_segundo_nivel():
     return rx.box(
         rx.desktop_only(
             rx.vstack(
-                rx.text("Segundo Nivel (Segundo Piso)", 
-                        font_size=[FontSize.SMALL.value, FontSize.LARGE.value]),
+                rx.text("Segundo nivel (Segundo piso)", 
+                        font_size=[FontSize.SMALL.value, Texto_Desktop.SUBTITULOS.value],
+                        weight="bold"),
                 rx.text(f"Reservaciones de las {ConsultaHorarios.select_horas}", 
-                        font_size=[FontSize.SMALL.value, FontSize.MEDIUM.value]),
+                        font_size=[FontSize.SMALL.value, Texto_Desktop.SECCIONES.value]),
+                rx.hstack(
+                    rx.text("con fecha", 
+                        font_size=[FontSize.SMALL.value, Texto_Desktop.SECCIONES.value]),
+                    rx.text(rx.moment(ConsultaHorarios.fecha_seleccionada, format="DD-MM-YYYY"),
+                            font_size=[FontSize.SMALL.value, Texto_Desktop.SECCIONES.value]),
+                    spacing="2"
+                ),
                 # rx.hstack(
                 #     render_salon("201"),
                 #     rx.spacer(),
@@ -593,10 +621,18 @@ def mapa_segundo_nivel():
         ),
         rx.mobile_and_tablet(
             rx.vstack(
-                rx.text("Segundo Nivel (Segundo Piso)", 
-                        font_size=[FontSize.SMALL.value, FontSize.LARGE.value]),
+                rx.text("Segundo nivel (Segundo piso)", 
+                        font_size=Texto_Mobile.SUBTITULOS.value,
+                        weight="bold"),
                 rx.text(f"Reservaciones de las {ConsultaHorarios.select_horas}", 
-                        font_size=[FontSize.SMALL.value, FontSize.MEDIUM.value]),
+                        font_size=Texto_Mobile.SECCIONES.value),
+                rx.hstack(
+                    rx.text("con fecha", 
+                        font_size=[FontSize.SMALL.value, Texto_Desktop.SECCIONES.value]),
+                    rx.text(rx.moment(ConsultaHorarios.fecha_seleccionada, format="DD-MM-YYYY"),
+                            font_size=[FontSize.SMALL.value, Texto_Desktop.SECCIONES.value]),
+                    spacing="2"
+                ),
                 # rx.hstack(
                 #     render_salon("201"),
                 #     rx.spacer(),

@@ -43,7 +43,8 @@ def inicion_sesion_desktop():
                                     width="100%",
                                     height="100%",
                                 ),
-                                on_submit=Login.login_form
+                                on_submit=Login.login_form,
+                                reset_on_submit=True
                             ),
                             width="100%",
                             height="100%",
@@ -51,7 +52,7 @@ def inicion_sesion_desktop():
                             justify="center",
                             spacing="4"
                         ),
-                        width="30%",
+                        min_width="30%",
                         height="90%",
                         background="rgba(0, 114, 63, 0.86)",
                         border_radius="24px",
@@ -114,7 +115,8 @@ def inicion_sesion_mobile():
                                     width="100%",
                                     height="100%",
                                 ),
-                                on_submit=Login.login_form
+                                on_submit=Login.login_form,
+                                reset_on_submit=True
                             ),
                             width="100%",
                             height="100%",

@@ -1,2 +1,4 @@
 
 reflex==0.8.6
+pymysql==1.1.1
+pytz==2025.2
