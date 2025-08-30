@@ -12,15 +12,15 @@ config = rx.Config(
 
     # URL del backend (para API)
     # ESTO DEBE APUNTAR A RAILWAY CUANDO SE EXPORTE EL FRONTED
-    api_url=os.getenv("API_URL", "https://gestionposgradofcausuarios-production.up.railway.app"), # NECESARIO ACTIVAR ANTES DE SUBIR A HOST
+    api_url=os.getenv("API_URL", "https://gestionposgradofcadocentes-production.up.railway.app"), # NECESARIO ACTIVAR ANTES DE SUBIR A HOST
 
     # Esto no se sabe si realmente funciona (PROBAR)
     # # Permitir que el frontend en Vercel se conecte vía WebSocket
     allowed_hosts=[
-        "frontend-gpfca-usuarios.vercel.app" # NECESARIO ACTIVAR ANTES DE SUBIR A HOST
+        "gestion-posgrado-fca-docentes.vercel.app" # NECESARIO ACTIVAR ANTES DE SUBIR A HOST
     ],
     show_built_with_reflex=0
-    
+
     # Descomentar unicamente esta linea para local
     #db_url="mysql+pymysql://root:GWqLlujpGEFqvQnhLspoIldtXyFDlZxm@autorack.proxy.rlwy.net:31857/Gestion_PosgradoDB"
 )
