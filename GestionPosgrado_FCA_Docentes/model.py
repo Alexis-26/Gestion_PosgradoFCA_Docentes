@@ -2,20 +2,22 @@ import reflex as rx
 from sqlalchemy import text  # Importa la función text esto es porque esta,os consultando de manera cruda
 
 class MYSQLDB(rx.Base):
-    def verificacion_usuario(self, no_empleado:str, password:str):
+    def verificacion_usuario(self, no_empleado:str):
         try:
             with rx.session() as session:
-                resultado_no_empleado = session.exec(
-                    text("SELECT id, nombre FROM Docente WHERE no_empleado = :no_empleado"),
+                resultado = session.exec(
+                    text("""
+                        SELECT a.password, d.nombre
+                        FROM Autenticacion a
+                        JOIN Docente d ON a.id_docente = d.id
+                        WHERE d.no_empleado = :no_empleado
+                    """),
                     params={"no_empleado":no_empleado}
                 ).fetchall()
-                resultado_id = session.exec(
-                    text("SELECT id_docente FROM Autenticacion WHERE password = :password"),
-                    params={"password":password}
-                ).fetchall()
 
-                if resultado_no_empleado and resultado_id:
-                    return resultado_no_empleado
+                if resultado:
+                    print("RESULTADO: ", resultado)
+                    return resultado
                 else:
                     print("NO EXISTE")
                     return
@@ -95,14 +97,23 @@ class MYSQLDB(rx.Base):
             except Exception as e:
                 print(f"Error al conectar a la base de datos MySQL: {str(e)}")
 
-    def cambio_password(self, no_empleado:str, actual:str, nueva:str):
+    def cambio_password(self, no_empleado:str, nueva:str):
         try:
             with rx.session() as session:
-                print(no_empleado, actual, nueva)
                 resultado = session.exec(
-                    text("CALL CambiarPasswordDocente(:no_empleado, :actual, :nueva)"),
-                    params={"no_empleado":no_empleado, "actual":actual, "nueva":nueva}
+                    text("CALL CambiarPasswordDocente(:no_empleado, :nueva)"),
+                    params={"no_empleado":no_empleado, "nueva":nueva}
                 )
                 session.commit()
+        except Exception as e:
+            print(f"Error al conectar a la base de datos MySQL: {str(e)}")
+
+    def consulta_cursos(self):
+        try:
+            with rx.session() as session:
+                resultado = session.exec(
+                    text("CALL ALL_materias()")
+                ).fetchall()
+                return resultado
         except Exception as e:
             print(f"Error al conectar a la base de datos MySQL: {str(e)}")

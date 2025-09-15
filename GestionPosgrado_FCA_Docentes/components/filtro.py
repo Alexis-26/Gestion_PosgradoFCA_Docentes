@@ -2,7 +2,8 @@ import reflex as rx
 import datetime
 from ..styles.colors import Colors
 from ..styles.styles import FontSize
-from ..state import ConsultaHorarios
+from ..styles.utils import Texto_Desktop, Texto_Mobile
+from ..state import ConsultaHorarios, PisoVisualizacion
 
 def calendar() -> rx.Component:
     return rx.box(
@@ -152,4 +153,24 @@ def search_materia() -> rx.Component:
             ),
         ),
         width=["80%", "30%"]
+    )
+
+def piso_visualizar():
+    return rx.box(
+        rx.tablet_and_desktop(
+            rx.hstack(
+                rx.text("1er Piso", font_size=Texto_Desktop.SECCIONES.value),
+                rx.switch(on_change=PisoVisualizacion.cambio, size="3", color_scheme="green"),
+                rx.text("2do Piso", font_size=Texto_Desktop.SECCIONES.value),
+                align="center"
+            )
+        ),
+        rx.mobile_only(
+            rx.hstack(
+                rx.text("1er Piso", font_size=Texto_Mobile.TEXTO_CHICO.value),
+                rx.switch(on_change=PisoVisualizacion.cambio, size="1", color_scheme="green"),
+                rx.text("2do Piso", font_size=Texto_Mobile.TEXTO_CHICO.value),
+                align="center"
+            )
+        )
     )

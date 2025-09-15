@@ -1,4 +1,4 @@
-from ..state import Login
+from ..state import InicioSesion
 from ..styles.utils import Imagenes
 import reflex as rx
 
@@ -43,7 +43,7 @@ def inicion_sesion_desktop():
                                     width="100%",
                                     height="100%",
                                 ),
-                                on_submit=Login.login_form,
+                                on_submit=InicioSesion.login_form,
                                 reset_on_submit=True
                             ),
                             width="100%",
@@ -115,7 +115,7 @@ def inicion_sesion_mobile():
                                     width="100%",
                                     height="100%",
                                 ),
-                                on_submit=Login.login_form,
+                                on_submit=InicioSesion.login_form,
                                 reset_on_submit=True
                             ),
                             width="100%",

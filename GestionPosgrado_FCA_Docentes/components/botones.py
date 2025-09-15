@@ -1,7 +1,7 @@
 from ..styles.colors import Colors
 from ..styles.styles import FontSize
 from ..styles.utils import Iconos
-from ..state import Tabla_ConsultaHorarios, Login, FormCambio
+from ..state import Tabla_ConsultaHorarios, InicioSesion, FormCambio
 import reflex as rx
 
 def regresar_inicio():
@@ -70,7 +70,7 @@ def cerrar_sesion():
         height=["35px", "45px"],
         background=Colors.WHITE.value,
         radius="full",
-        on_click=[Login.cerrar_sesion, Tabla_ConsultaHorarios.informacion_horarios]
+        on_click=[InicioSesion.cerrar_sesion, Tabla_ConsultaHorarios.informacion_horarios]
     )
 
 def cambio_password():

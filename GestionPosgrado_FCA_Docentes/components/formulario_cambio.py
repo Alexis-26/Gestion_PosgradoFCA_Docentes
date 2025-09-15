@@ -1,4 +1,5 @@
 from ..styles.colors import Colors
+from ..styles.utils import Imagenes
 from ..state import FormCambio
 import reflex as rx
 
@@ -9,7 +10,7 @@ def form_cambio():
                 # Es la parte verde del formulario
                 rx.flex(
                     rx.hstack(
-                        rx.image(src="/escudo_uabc.png", width="50px"),
+                        #rx.image(src=Imagenes.LOGO_UABC_FCA.value, width="100px"),
                         rx.heading("CAMBIO DE CONTRASEÑA", color="#FFFFFF"),
                         #rx.heading(AsignacionHorarios.salon_abierto, color="#FFFFFF"),
                         #rx.icon("calendar", size=60, color="#FFFFFF"),
@@ -91,7 +92,7 @@ def form_cambio():
                 # Es la parte verde del formulario
                 rx.flex(
                     rx.hstack(
-                        rx.image(src="/escudo_uabc.png", width="50px"),
+                        #rx.image(src=Imagenes.LOGO_UABC_FCA.value, width="50px"),
                         rx.heading("CAMBIO DE CONTRASEÑA", color="#FFFFFF", font_size="20px"),
                         #rx.heading(AsignacionHorarios.salon_abierto, color="#FFFFFF"),
                         #rx.icon("calendar", size=60, color="#FFFFFF"),

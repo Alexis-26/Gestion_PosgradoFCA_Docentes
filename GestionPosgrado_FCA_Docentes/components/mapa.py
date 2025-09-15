@@ -446,7 +446,7 @@ def mapa_primer_nivel():
     return rx.box(
         rx.desktop_only(
             rx.vstack(
-                rx.text("Primer nivel (Primer piso)", 
+                rx.text("1er Piso", 
                         font_size=[FontSize.SMALL.value, Texto_Desktop.SUBTITULOS.value],
                         weight="bold"),
                 rx.text(f"Reservaciones de las {ConsultaHorarios.select_horas}", 
@@ -511,16 +511,16 @@ def mapa_primer_nivel():
         ),
         rx.mobile_and_tablet(
             rx.vstack(
-                 rx.text("Primer nivel (Primer piso)", 
+                 rx.text("1er Piso", 
                         font_size=Texto_Mobile.SUBTITULOS.value,
                         weight="bold"),
                 rx.text(f"Reservaciones de las {ConsultaHorarios.select_horas}", 
                         font_size=Texto_Mobile.SECCIONES.value),
                 rx.hstack(
                     rx.text("con fecha", 
-                        font_size=[FontSize.SMALL.value, Texto_Desktop.SECCIONES.value]),
+                        font_size=Texto_Mobile.SECCIONES.value),
                     rx.text(rx.moment(ConsultaHorarios.fecha_seleccionada, format="DD-MM-YYYY"),
-                            font_size=[FontSize.SMALL.value, Texto_Desktop.SECCIONES.value]),
+                            font_size=Texto_Mobile.SECCIONES.value),
                     spacing="2"
                 ),
                 # Primera fila (101 y 103)
@@ -561,7 +561,7 @@ def mapa_segundo_nivel():
     return rx.box(
         rx.desktop_only(
             rx.vstack(
-                rx.text("Segundo nivel (Segundo piso)", 
+                rx.text("2do Piso", 
                         font_size=[FontSize.SMALL.value, Texto_Desktop.SUBTITULOS.value],
                         weight="bold"),
                 rx.text(f"Reservaciones de las {ConsultaHorarios.select_horas}", 
@@ -621,16 +621,16 @@ def mapa_segundo_nivel():
         ),
         rx.mobile_and_tablet(
             rx.vstack(
-                rx.text("Segundo nivel (Segundo piso)", 
+                rx.text("2do Piso", 
                         font_size=Texto_Mobile.SUBTITULOS.value,
                         weight="bold"),
                 rx.text(f"Reservaciones de las {ConsultaHorarios.select_horas}", 
                         font_size=Texto_Mobile.SECCIONES.value),
                 rx.hstack(
                     rx.text("con fecha", 
-                        font_size=[FontSize.SMALL.value, Texto_Desktop.SECCIONES.value]),
+                        font_size=Texto_Mobile.SECCIONES.value),
                     rx.text(rx.moment(ConsultaHorarios.fecha_seleccionada, format="DD-MM-YYYY"),
-                            font_size=[FontSize.SMALL.value, Texto_Desktop.SECCIONES.value]),
+                            font_size=Texto_Mobile.SECCIONES.value),
                     spacing="2"
                 ),
                 # rx.hstack(

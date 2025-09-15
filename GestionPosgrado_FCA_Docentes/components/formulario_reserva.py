@@ -1,5 +1,6 @@
-from ..state import AsignacionHorarios, Tabla_ConsultaHorarios, Login
+from ..state import AsignacionHorarios, Tabla_ConsultaHorarios, InicioSesion
 from ..styles.colors import Colors
+from ..styles.utils import Imagenes
 import reflex as rx
 
 def form_reservar():
@@ -9,7 +10,7 @@ def form_reservar():
                 # Es la parte verde del formulario
                 rx.flex(
                     rx.vstack(
-                        rx.image(src="/escudo_uabc.png", width="100px"),
+                        rx.image(src=Imagenes.LOGO_UABC_FCA.value, width="180px"),
                         rx.heading("RESERVANDO", color="#FFFFFF"),
                         rx.heading(AsignacionHorarios.salon_abierto, color="#FFFFFF"),
                         rx.icon("calendar", size=60, color="#FFFFFF"),
@@ -34,10 +35,11 @@ def form_reservar():
                                     placeholder="Número de Empleado",
                                     name="numero_empleado",
                                     required=True,
-                                    value=Login.no_empleado_activo,
+                                    value=InicioSesion.no_empleado_activo,
                                     read_only=True,
                                     variant="surface",
                                     color_scheme="green",
+                                    width="160px"
                                 ),
                                 spacing="0"
                             ),
@@ -47,7 +49,7 @@ def form_reservar():
                                     placeholder="Nombre del Docente", 
                                     name="nombre_maestro",
                                     required=True,
-                                    value=Login.nombre_docente,
+                                    value=InicioSesion.nombre_docente,
                                     read_only=True,
                                     variant="surface",
                                     color_scheme="green",
@@ -61,24 +63,31 @@ def form_reservar():
                         rx.hstack(
                             rx.vstack(
                                 rx.text("Clave Materia"),
-                                rx.input(                        # Aqui esta el input CLAVE MATERIA
+                                rx.select(       
+                                    AsignacionHorarios.opciones_clave,                 # Aqui esta el input CLAVE MATERIA
+                                    value=AsignacionHorarios.clave_seleccionado,
                                     placeholder="Clave de Materia",
                                     name="clave_materia", 
                                     required=True,
                                     variant="surface",
-                                    color_scheme="green"
+                                    color_scheme="green",
+                                    width="160px",
+                                    on_change=AsignacionHorarios.set_clave
                                 ),
                                 spacing="0"
                             ),
                             rx.vstack(
                                 rx.text("Nombre de Materia"),
-                                rx.input(                         # Aqui esta el input de NOMBRE DE LA MATERIA 
+                                rx.select(                         # Aqui esta el input de NOMBRE DE LA MATERIA 
+                                    AsignacionHorarios.opciones_cursos,
+                                    value=AsignacionHorarios.curso_seleccionado,
                                     placeholder="Nombre de la materia",
                                     name="nombre_materia",
                                     required=True,
                                     variant="surface",
                                     color_scheme="green",
-                                    width="400px"
+                                    width="400px",
+                                    on_change=AsignacionHorarios.set_curso
                                 ),
                                 spacing="0"
                             ),
@@ -88,12 +97,14 @@ def form_reservar():
                         rx.hstack(
                             rx.vstack(
                                 rx.text("Grupo"),
-                                rx.input(            # Aqui esta el input de GRUPO
+                                rx.select(            # Aqui esta el input de GRUPO
+                                    AsignacionHorarios.opciones_grupos,
                                     placeholder="Grupo",
                                     name="grupo",
                                     required=True,
                                     variant="surface",
-                                    color_scheme="green"
+                                    color_scheme="green",
+                                    width="160px",
                                 ),
                                 spacing="0"
                             ),
@@ -200,7 +211,7 @@ def form_reservar():
                 # Es la parte verde del formulario
                 rx.flex(
                     rx.hstack(
-                        rx.image(src="/escudo_uabc.png", width="50px"),
+                        #rx.image(src="/escudo_uabc.png", width="50px"),
                         rx.heading("RESERVANDO", color="#FFFFFF"),
                         rx.heading(AsignacionHorarios.salon_abierto, color="#FFFFFF"),
                         rx.icon("calendar", size=30, color="#FFFFFF"),
@@ -223,10 +234,11 @@ def form_reservar():
                                     placeholder="Número de Empleado",
                                     name="numero_empleado",
                                     required=True,
-                                    disabled=True,
+                                    value=InicioSesion.no_empleado_activo,
+                                    read_only=True,
                                     variant="surface",
                                     color_scheme="green",
-                                    width="300px"
+                                    width="280px"
                                 ),
                                 spacing="0"
                             ),
@@ -236,46 +248,55 @@ def form_reservar():
                                     placeholder="Nombre del Docente", 
                                     name="nombre_maestro",
                                     required=True,
-                                    disabled=True,
+                                    value=InicioSesion.nombre_docente,
+                                    read_only=True,
                                     variant="surface",
                                     color_scheme="green",
-                                    width="300px"
+                                    width="280px"
                                 ),
                                 spacing="0"
                             ),
                             rx.vstack(
                                 rx.text("Clave Materia"),
-                                rx.input(                        # Aqui esta el input CLAVE MATERIA
+                                rx.select(       
+                                    AsignacionHorarios.opciones_clave,                 # Aqui esta el input CLAVE MATERIA
+                                    value=AsignacionHorarios.clave_seleccionado,
                                     placeholder="Clave de Materia",
                                     name="clave_materia", 
                                     required=True,
                                     variant="surface",
                                     color_scheme="green",
-                                    width="300px"
+                                    width="280px",
+                                    on_change=AsignacionHorarios.set_clave
                                 ),
                                 spacing="0"
                             ),
                             rx.vstack(
                                 rx.text("Nombre de Materia"),
-                                rx.input(                         # Aqui esta el input de NOMBRE DE LA MATERIA 
+                                rx.select(                         # Aqui esta el input de NOMBRE DE LA MATERIA 
+                                    AsignacionHorarios.opciones_cursos,
+                                    value=AsignacionHorarios.curso_seleccionado,
                                     placeholder="Nombre de la materia",
                                     name="nombre_materia",
                                     required=True,
                                     variant="surface",
                                     color_scheme="green",
-                                    width="300px"
+                                    width="280px",
+                                    on_change=AsignacionHorarios.set_curso
                                 ),
                                 spacing="0"
                             ),
                             rx.hstack(
                                 rx.vstack(
                                     rx.text("Grupo"),
-                                    rx.input(            # Aqui esta el input de GRUPO
+                                    rx.select(            # Aqui esta el input de GRUPO
+                                        AsignacionHorarios.opciones_grupos,
                                         placeholder="Grupo",
                                         name="grupo",
                                         required=True,
                                         variant="surface",
-                                        color_scheme="green"
+                                        color_scheme="green",
+                                        width="100px",
                                     ),
                                     spacing="0"
                                 ),
@@ -302,7 +323,8 @@ def form_reservar():
                                                   color_scheme="gray", 
                                                   variant="outline", 
                                                   high_contrast=True, 
-                                                  type="button", 
+                                                  type="button",
+                                                  width="160px" 
                                                   #disabled=AsignacionHorarios.select_horario, 
                                                   #on_click=AsignacionHorarios.component_menu_horas(False), width="300px"
                                                 ),
@@ -324,13 +346,15 @@ def form_reservar():
                                         ),
                                         side="top",
                                         size="1",
-                                        width="300px"
+                                        width="160px"
                                         #modal=False,
                                     ),
                                     open=AsignacionHorarios.menu_mobile,  # Controla el estado del menú
                                     on_open_change=AsignacionHorarios.component_menu_horas_mobile,  # Handle open/close state
                                 ),
-                                spacing="0"
+                                spacing="0",
+                                width="100%",
+                                align="center"
                             ),
                             # rx.hstack(
                             #     rx.vstack(
@@ -380,7 +404,8 @@ def form_reservar():
                     width="100%",
                     height="550px",
                 ),
-                width="350px",
+                width="310px",
+                align="center"
             ),
         ),
         background="#FFFFFF",

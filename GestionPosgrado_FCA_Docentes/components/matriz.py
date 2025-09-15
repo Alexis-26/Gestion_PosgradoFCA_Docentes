@@ -103,7 +103,7 @@ def show_row(kv):
                     height="100%",
                     spacing="0",
                 ),
-                width=["60px", "150px"], # PENDIENTE A 100%
+                width=["60px", "100%"], # PENDIENTE A 100%
                 height=["60px","80px"],
                 justify="center",
                 align="center",

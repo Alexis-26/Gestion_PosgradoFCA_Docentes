@@ -22,7 +22,7 @@ class Imagenes(Enum):
 
 class Iconos(Enum):
     REGRESAR = "house"
-    CERRAR_SESION = "power-off"
+    CERRAR_SESION = "power"
     CAMBIO_PASSWORD = "arrow-right-left"
     ELIMINAR = "trash-2"
     MISRESERVACIONES = "calendar-search"
