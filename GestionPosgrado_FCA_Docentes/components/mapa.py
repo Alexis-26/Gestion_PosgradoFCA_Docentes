@@ -5,7 +5,6 @@ from ..styles.utils import Texto_Desktop, Texto_Mobile
 from ..state import ConsultaHorarios, AsignacionHorarios
 from .formulario_reserva import form_reservar
 from .simbologia import simbologia_colores
-from .reservacion import reservar_salon
 
 def get_bg_color(estado):
     return rx.cond(

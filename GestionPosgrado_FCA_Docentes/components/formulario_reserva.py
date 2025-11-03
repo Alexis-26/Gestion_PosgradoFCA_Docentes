@@ -16,8 +16,6 @@ def form_reservar():
                         rx.icon("calendar", size=60, color="#FFFFFF"),
                         align="center"
                     ),
-                    # width="100%",
-                    # height="100%",
                     width="200px",
                     height="500px",
                     background=Colors.PRIMARY_GREEN.value,
@@ -69,6 +67,7 @@ def form_reservar():
                                     placeholder="Clave de Materia",
                                     name="clave_materia", 
                                     required=True,
+                                    position="popper",
                                     variant="surface",
                                     color_scheme="green",
                                     width="160px",
@@ -84,6 +83,7 @@ def form_reservar():
                                     placeholder="Nombre de la materia",
                                     name="nombre_materia",
                                     required=True,
+                                    position="popper",
                                     variant="surface",
                                     color_scheme="green",
                                     width="400px",
@@ -103,6 +103,7 @@ def form_reservar():
                                     name="grupo",
                                     required=True,
                                     variant="surface",
+                                    position="popper",
                                     color_scheme="green",
                                     width="160px",
                                 ),
@@ -130,8 +131,6 @@ def form_reservar():
                                                   variant="outline", 
                                                   high_contrast=True, 
                                                   type="button", 
-                                                  #disabled=AsignacionHorarios.select_horario, 
-                                                  #on_click=AsignacionHorarios.component_menu_horas("")
                                                   ),
                                     ),
                                     rx.menu.content(
@@ -151,7 +150,6 @@ def form_reservar():
                                         ),
                                         side="bottom",
                                         size="1",
-                                        #modal=False,
                                     ),
                                     open=AsignacionHorarios.menu_desktop,  # Controla el estado del menú
                                     on_open_change=AsignacionHorarios.component_menu_horas_desktop  # Handle open/close state
@@ -161,32 +159,12 @@ def form_reservar():
                             width="100%",
                             margin_top="20px"
                         ),
-                        # rx.hstack(
-                        #     rx.vstack(
-                        #         rx.checkbox(text="Horario Fijo", name="horario_fijo", size="3", value="fijo", color_scheme="green", on_change=AsignacionHorarios.toggle_fecha_fin),
-                        #     ),
-                        #     rx.vstack(
-                        #         rx.text("Fecha de Finalización"), 
-                        #         rx.input(                   # Aqui esta el input DE FECHA DE FIN 
-                        #             type="date",
-                        #             disabled=AsignacionHorarios.fecha_fin_habilitado,
-                        #             name="fecha_fin",
-                        #             min=AsignacionHorarios.min_date,
-                        #             variant="surface",
-                        #             color_scheme="green"
-                        #         ),
-                        #         spacing="0",
-                        #         margin_left="10px"
-                        #     ),
-                        #     width="100%",
-                        #     margin_top="20px",
-                        #     spacing="9"
-                        # ),
                         rx.hstack(
                             rx.button(
                                 "CANCELAR",
                                 color_scheme="red",
                                 variant="solid",
+                                type="button",
                                 on_click=AsignacionHorarios.cancelar
                             ),
                             rx.button(
@@ -200,7 +178,6 @@ def form_reservar():
                         ),
                         on_submit=AsignacionHorarios.aceptar_reserva
                     ),
-                    #background="red",
                     width="70%",
                     height="500px",
                 ),
@@ -211,14 +188,12 @@ def form_reservar():
                 # Es la parte verde del formulario
                 rx.flex(
                     rx.hstack(
-                        #rx.image(src="/escudo_uabc.png", width="50px"),
                         rx.heading("RESERVANDO", color="#FFFFFF"),
                         rx.heading(AsignacionHorarios.salon_abierto, color="#FFFFFF"),
                         rx.icon("calendar", size=30, color="#FFFFFF"),
                         align="center"
                     ),
                     width="100%",
-                    # height="100%",
                     height="100px",
                     background=Colors.PRIMARY_GREEN.value,
                     align="center",
@@ -264,6 +239,7 @@ def form_reservar():
                                     placeholder="Clave de Materia",
                                     name="clave_materia", 
                                     required=True,
+                                    position="popper",
                                     variant="surface",
                                     color_scheme="green",
                                     width="280px",
@@ -280,6 +256,7 @@ def form_reservar():
                                     name="nombre_materia",
                                     required=True,
                                     variant="surface",
+                                    position="popper",
                                     color_scheme="green",
                                     width="280px",
                                     on_change=AsignacionHorarios.set_curso
@@ -294,6 +271,7 @@ def form_reservar():
                                         placeholder="Grupo",
                                         name="grupo",
                                         required=True,
+                                        position="popper",
                                         variant="surface",
                                         color_scheme="green",
                                         width="100px",
@@ -325,8 +303,6 @@ def form_reservar():
                                                   high_contrast=True, 
                                                   type="button",
                                                   width="160px" 
-                                                  #disabled=AsignacionHorarios.select_horario, 
-                                                  #on_click=AsignacionHorarios.component_menu_horas(False), width="300px"
                                                 ),
                                     ),
                                     rx.menu.content(
@@ -356,32 +332,12 @@ def form_reservar():
                                 width="100%",
                                 align="center"
                             ),
-                            # rx.hstack(
-                            #     rx.vstack(
-                            #         rx.checkbox(text="Horario Fijo", name="horario_fijo", size="3", value="fijo", color_scheme="green", on_change=AsignacionHorarios.toggle_fecha_fin),
-                            #     ),
-                            #     rx.vstack(
-                            #         rx.text("Fecha de Finalización"), 
-                            #         rx.input(                   # Aqui esta el input DE FECHA DE FIN 
-                            #             type="date",
-                            #             disabled=AsignacionHorarios.fecha_fin_habilitado,
-                            #             name="fecha_fin",
-                            #             min=AsignacionHorarios.min_date,
-                            #             variant="surface",
-                            #             color_scheme="green"
-                            #         ),
-                            #         spacing="0",
-                            #         margin_left="10px"
-                            #     ),
-                            #     width="100%",
-                            #     #margin_top="20px",
-                            #     spacing="9"
-                            # ),
                             rx.hstack(
                                 rx.button(
                                     "CANCELAR",
                                     color_scheme="red",
                                     variant="solid",
+                                    type="button",
                                     on_click=AsignacionHorarios.cancelar
                                 ),
                                 rx.button(
@@ -394,13 +350,12 @@ def form_reservar():
                                 justify="center"
                             ),
                             width="100%",
-                            #margin_top="20px"
                         ),
                         width="100%",
                         padding_left="20px",
                         padding_right="20px",
+                        on_submit=AsignacionHorarios.aceptar_reserva
                     ),
-                    #background="red",
                     width="100%",
                     height="550px",
                 ),

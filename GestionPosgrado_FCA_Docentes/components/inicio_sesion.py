@@ -32,11 +32,9 @@ def inicion_sesion_desktop():
                                             height="40px"
                                         ),
                                         rx.button("INGRESAR", type="submit", width="100%", background="#DFAC0F", margin_top="20px", size="3"),
-                                        # background="red",
                                         width="70%",
                                         height="300px",
                                         spacing="1",
-                                        #align="center"
                                     ),
                                     align="center",
                                     justify="center",
@@ -104,11 +102,9 @@ def inicion_sesion_mobile():
                                             width="100%"
                                         ),
                                         rx.button("INGRESAR", type="submit", width="100%", margin_top="40px", background="#DFAC0F"),
-                                        # background="red",
                                         width="70%",
                                         height="300px",
                                         spacing="1",
-                                        #align="center"
                                     ),
                                     align="center",
                                     justify="center",

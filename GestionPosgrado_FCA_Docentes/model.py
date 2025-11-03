@@ -1,5 +1,5 @@
 import reflex as rx
-from sqlalchemy import text  # Importa la función text esto es porque esta,os consultando de manera cruda
+from sqlalchemy import text  # Importa la función text para operaciones de SQL
 
 class MYSQLDB(rx.Base):
     def verificacion_usuario(self, no_empleado:str):
@@ -115,5 +115,41 @@ class MYSQLDB(rx.Base):
                     text("CALL ALL_materias()")
                 ).fetchall()
                 return resultado
+        except Exception as e:
+            print(f"Error al conectar a la base de datos MySQL: {str(e)}")
+
+    # DISPONIBILIDAD DE ESPACIOS PARA RESERVAR
+    def verificacion_disponibilidad(self, no_empleado:str):
+        try:
+            with rx.session() as session:
+                resultado = session.exec(
+                    text("SELECT NoReservas FROM Docente WHERE no_empleado = :no_empleado"),
+                    params={"no_empleado":no_empleado}
+                ).fetchall()
+                return resultado
+        except Exception as e:
+            print(f"Error al conectar a la base de datos MySQL: {str(e)}")
+
+    # RESTAR RESERVACION
+    def restar_reservacion(self, no_empleado:str):
+        try:
+            with rx.session() as session:
+                resultado = session.exec(
+                    text("CALL RestarReserva(:no_empleado)"),
+                    params={"no_empleado":no_empleado}
+                )
+                session.commit()
+        except Exception as e:
+            print(f"Error al conectar a la base de datos MySQL: {str(e)}")
+
+        # SUMAR RESERVACION
+    def sumar_reservacion(self, no_empleado:str):
+        try:
+            with rx.session() as session:
+                resultado = session.exec(
+                    text("CALL SumarReserva(:no_empleado)"),
+                    params={"no_empleado":no_empleado}
+                )
+                session.commit()
         except Exception as e:
             print(f"Error al conectar a la base de datos MySQL: {str(e)}")

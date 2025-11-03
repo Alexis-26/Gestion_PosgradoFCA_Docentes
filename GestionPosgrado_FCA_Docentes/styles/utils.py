@@ -8,12 +8,12 @@ class Texto_Desktop(Enum):
     TEXTO_CHICO = "1rem"
 
 class Texto_Mobile(Enum):
-    TITULO_PRINCIPAL = "1.5rem"   # ~24px
-    SUBTITULOS = "1.25rem"       # ~20px
-    SECCIONES = "1.125rem"       # ~18px
-    TEXTO_NORMAL = "1rem"        # ~16px (ideal para lectura)
-    TEXTO_CHICO = "0.875rem"     # ~14px
-    TEXTO_EXTRA_CHICO = "0.75rem" # ~12px (etiquetas, notas)
+    TITULO_PRINCIPAL = "1.5rem"
+    SUBTITULOS = "1.25rem"
+    SECCIONES = "1.125rem"
+    TEXTO_NORMAL = "1rem"
+    TEXTO_CHICO = "0.875rem"
+    TEXTO_EXTRA_CHICO = "0.75rem"
 
 class Imagenes(Enum):
     LOGO = "/escudo_uabc.png"

@@ -5,28 +5,31 @@ from ..state import Tabla_ConsultaHorarios, InicioSesion, FormCambio
 import reflex as rx
 
 def regresar_inicio():
-    return rx.button(
-        rx.icon(tag=Iconos.REGRESAR.value, 
+    return rx.tooltip(
+        rx.button(
+            rx.icon(
+                tag=Iconos.REGRESAR.value,
                 class_name="w-[30px] h-[30px] md:w-[30px] md:h-[30px]",
-                color=Colors.BLACK.value
-                ),
-        # rx.text("Regresar", 
-        #         color=Colors.BLACK.value,
-        #         font_size=["5px", FontSize.SMALL.value]
-        #         ),
-        variant="solid",
-        width=["35px", "45px"],
-        height=["35px", "45px"],
-        background=Colors.WHITE.value,
-        radius="full",
-        on_click=rx.redirect("/horarios")
+                color=Colors.BLACK.value,
+            ),
+            variant="solid",
+            width=["35px", "45px"],
+            height=["35px", "45px"],
+            background=Colors.WHITE.value,
+            radius="full",
+            on_click=rx.redirect("/horarios")
+        ),
+        content="Regresar al inicio",
+        placement="top",
+        has_arrow=True,
     )
 
 def mis_reservaciones():
     return rx.button(
         rx.text("Mis Reservaciones", 
                 color=Colors.BLACK.value, 
-                font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value]
+                font_size=[FontSize.EXTRA_SMALL.value, FontSize.SMALL.value],
+                weight="bold"
                 ),
         variant="solid",
         background=Colors.SECONDARY_ORANGE.value,
@@ -37,64 +40,76 @@ def mis_reservaciones():
     )
 
 def mis_reservaciones_mobile():
-    return rx.button(
-        rx.icon(tag=Iconos.MISRESERVACIONES.value, 
-                class_name="w-[30px] h-[30px] md:w-[30px] md:h-[30px]",
-                color=Colors.BLACK.value
-                ),
-        # rx.text("Regresar", 
-        #         color=Colors.BLACK.value,
-        #         font_size=["5px", FontSize.SMALL.value]
-        #         ),
-        variant="solid",
-        width=["35px", "45px"],
-        height=["35px", "45px"],
-        background=Colors.WHITE.value,
-        radius="full",
-        on_click=rx.redirect("/horarios/reservaciones")
+    return rx.tooltip(
+        rx.button(
+            rx.icon(tag=Iconos.MISRESERVACIONES.value, 
+                    class_name="w-[30px] h-[30px] md:w-[30px] md:h-[30px]",
+                    color=Colors.BLACK.value
+                    ),
+            variant="solid",
+            width=["35px", "45px"],
+            height=["35px", "45px"],
+            background=Colors.WHITE.value,
+            radius="full",
+            on_click=rx.redirect("/horarios/reservaciones")
+        ),
+        content="Mis reservaciones",
+        placement="top",
+        has_arrow=True,
     )
 
 
 def cerrar_sesion():
-    return rx.button(
-        rx.icon(tag=Iconos.CERRAR_SESION.value, 
-                class_name="w-[30px] h-[30px] md:w-[30px] md:h-[30px]", 
-                color=Colors.BLACK.value
-                ),
-        # rx.text("Cerrar Sesion", 
-        #         color=Colors.BLACK.value, 
-        #         font_size=["6px", FontSize.SMALL.value]
-        #         ),
-        variant="solid",
-        width=["35px", "45px"],
-        height=["35px", "45px"],
-        background=Colors.WHITE.value,
-        radius="full",
-        on_click=[InicioSesion.cerrar_sesion, Tabla_ConsultaHorarios.informacion_horarios]
+    return rx.tooltip(
+        rx.button(
+            rx.icon(tag=Iconos.CERRAR_SESION.value, 
+                    class_name="w-[30px] h-[30px] md:w-[30px] md:h-[30px]", 
+                    color=Colors.BLACK.value
+                    ),
+            variant="solid",
+            width=["35px", "45px"],
+            height=["35px", "45px"],
+            background=Colors.WHITE.value,
+            radius="full",
+            on_click=[InicioSesion.cerrar_sesion, Tabla_ConsultaHorarios.informacion_horarios]
+        ),
+        content="Cerrar sesión",
+        placement="top",
+        has_arrow=True,
     )
 
 def cambio_password():
-    return rx.button(
-        rx.icon(tag=Iconos.CAMBIO_PASSWORD.value, 
-                class_name="w-[30px] h-[30px] md:w-[30px] md:h-[30px]", 
-                color=Colors.BLACK.value
-                ),
-        variant="solid",
-        width=["35px", "45px"],
-        height=["35px", "45px"],
-        background=Colors.WHITE.value,
-        radius="full",
-        on_click=FormCambio.abrir_form
+    return rx.tooltip(
+        rx.button(
+            rx.icon(tag=Iconos.CAMBIO_PASSWORD.value, 
+                    class_name="w-[30px] h-[30px] md:w-[30px] md:h-[30px]", 
+                    color=Colors.BLACK.value
+                    ),
+            variant="solid",
+            width=["35px", "45px"],
+            height=["35px", "45px"],
+            background=Colors.WHITE.value,
+            radius="full",
+            on_click=FormCambio.abrir_form
+        ),
+        content="Cambiar contraseña",
+        placement="top",
+        has_arrow=True,
     )
 
 def eliminar_reservacion(salon:str, fecha:str, hora:str):
-    return rx.button(
-        rx.icon(
-            tag=Iconos.ELIMINAR.value,
-            color=Colors.WHITE.value
+    return rx.tooltip(
+        rx.button(
+            rx.icon(
+                tag=Iconos.ELIMINAR.value,
+                color=Colors.WHITE.value
+            ),
+            background=Colors.RED.value,
+            on_click=Tabla_ConsultaHorarios.eliminar_reserva(salon, fecha, hora)
         ),
-        background=Colors.RED.value,
-        on_click=Tabla_ConsultaHorarios.eliminar_reserva(salon, fecha, hora)
+        content="Eliminar reservación",
+        placement="top",
+        has_arrow=True,
     )
 
 def editar_reservacion():

@@ -3,6 +3,10 @@ import os
 
 config = rx.Config(
     app_name="GestionPosgrado_FCA_Docentes",
+    plugins=[
+        rx.plugins.SitemapPlugin(),
+        rx.plugins.TailwindV4Plugin(),
+    ],
     # EL PORT DEBE DE SER EL MISMO QUE LA API PUBLICA
     # Railway te pasa un puerto dinámico en la variable PORT
     backend_port=int(os.environ.get("PORT", 8000)),

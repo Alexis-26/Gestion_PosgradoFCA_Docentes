@@ -10,14 +10,10 @@ def form_cambio():
                 # Es la parte verde del formulario
                 rx.flex(
                     rx.hstack(
-                        #rx.image(src=Imagenes.LOGO_UABC_FCA.value, width="100px"),
                         rx.heading("CAMBIO DE CONTRASEÑA", color="#FFFFFF"),
-                        #rx.heading(AsignacionHorarios.salon_abierto, color="#FFFFFF"),
-                        #rx.icon("calendar", size=60, color="#FFFFFF"),
                         align="center"
                     ),
                     width="100%",
-                    # height="100%",
                     height="100px",
                     background=Colors.PRIMARY_GREEN.value,
                     align="center",
@@ -34,7 +30,6 @@ def form_cambio():
                                     placeholder="Nueva Contraseña",
                                     name="nueva_contraseña",
                                     required=True,
-                                    #disabled=True,
                                     variant="surface",
                                     color_scheme="green",
                                     width="100%"
@@ -58,13 +53,13 @@ def form_cambio():
                                 width="100%"
                             ),
                             width="100%",
-                            #margin_top="20px"
                         ),
                         rx.hstack(
                             rx.button(
                                 "CANCELAR",
                                 color_scheme="red",
                                 variant="solid",
+                                type="button",
                                 on_click=FormCambio.cancelar
                             ),
                             rx.button(
@@ -73,7 +68,7 @@ def form_cambio():
                                 type="submit",
                             ),
                             width="100%",
-                            margin_top="80px",
+                            margin_top="40px",
                             justify="center"
                         ),
                         on_submit=FormCambio.aceptar_cambio,
@@ -81,9 +76,8 @@ def form_cambio():
                         padding_left="20px",
                         padding_right="20px",
                     ),
-                    #background="red",
                     width="100%",
-                    height="300px",
+                    height="240px",
                 ),
             ),  
         ),
@@ -92,14 +86,10 @@ def form_cambio():
                 # Es la parte verde del formulario
                 rx.flex(
                     rx.hstack(
-                        #rx.image(src=Imagenes.LOGO_UABC_FCA.value, width="50px"),
                         rx.heading("CAMBIO DE CONTRASEÑA", color="#FFFFFF", font_size="20px"),
-                        #rx.heading(AsignacionHorarios.salon_abierto, color="#FFFFFF"),
-                        #rx.icon("calendar", size=60, color="#FFFFFF"),
                         align="center"
                     ),
                     width="100%",
-                    # height="100%",
                     height="100px",
                     background=Colors.PRIMARY_GREEN.value,
                     align="center",
@@ -138,13 +128,13 @@ def form_cambio():
                                 width="100%"
                             ),
                             width="100%",
-                            #margin_top="20px"
                         ),
                         rx.hstack(
                             rx.button(
                                 "CANCELAR",
                                 color_scheme="red",
                                 variant="solid",
+                                type="button",
                                 on_click=FormCambio.cancelar
                             ),
                             rx.button(
@@ -161,7 +151,6 @@ def form_cambio():
                         padding_left="20px",
                         padding_right="20px",
                     ),
-                    #background="red",
                     width="100%",
                     height="300px",
                 ),

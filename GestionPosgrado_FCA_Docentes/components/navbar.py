@@ -6,10 +6,7 @@ from .botones import regresar_inicio, cerrar_sesion, cambio_password, mis_reserv
 
 def navbar() -> rx.Component:
     return rx.box(
-        rx.flex(
-            # Elemento vacío para balancear el lado izquierdo
-            #rx.box(width=["60px", "160px"]) ,
-            
+        rx.flex(           
             # Título centrado con logo
             rx.hstack(
                 rx.image(src=Imagenes.LOGO_UABC_FCA.value, width=["60px", "120px"]),
@@ -17,14 +14,7 @@ def navbar() -> rx.Component:
                         font_size=[Texto_Mobile.SUBTITULOS.value, Texto_Desktop.TITULO_PRINCIPAL.value],
                         weight="bold", 
                         color=Colors.WHITE.value),
-            ) ,
-            
-            # Botón en el lado derecho
-            # rx.hstack(
-            #     cambio_password(),
-            #     cerrar_sesion(),
-            # ),
-
+            ),
             justify="center",
             align="center",
             width="100%",
@@ -39,10 +29,7 @@ def navbar() -> rx.Component:
 
 def navbar_reservas() -> rx.Component:
     return rx.box(
-        rx.flex(
-            # Elemento vacío para balancear el lado izquierdo
-            #regresar_inicio(),
-            
+        rx.flex(      
             # Título centrado con logo
             rx.hstack(
                 rx.image(src=Imagenes.LOGO_UABC_FCA.value, width=["60px", "120px"]) ,
@@ -50,14 +37,7 @@ def navbar_reservas() -> rx.Component:
                         font_size=[Texto_Mobile.SUBTITULOS.value, Texto_Desktop.TITULO_PRINCIPAL.value],
                         weight="bold", 
                         color=Colors.WHITE.value),
-            ) ,
-            
-            # Botón en el lado derecho
-            # rx.hstack(
-            #     cambio_password(),
-            #     cerrar_sesion(),
-            # ),
-            
+            ),         
             justify="center",
             align="center",
             width="100%",
@@ -84,7 +64,6 @@ def botones_navegacion_inicial_desktop() -> rx.Component:
         ),
         width="100%",
         height=["50px", "60px"],
-        #background=Colors.SECONDARY_GREEN.value,
         padding_left=["10px", "60px"],
         padding_right=["10px", "60px"]
     )
@@ -106,7 +85,6 @@ def botones_navegacion_misreservas_desktop() -> rx.Component:
         ),
         width="100%",
         height=["50px", "60px"],
-        #background=Colors.SECONDARY_GREEN.value,
         padding_left=["10px", "60px"],
         padding_right=["10px", "60px"]
     )
@@ -134,5 +112,4 @@ def botones_navegacion_mobile():
         z_index="1000",
         padding_left="40px",
         padding_right="40px",
-        #padding_bottom="10px"
     )
